@@ -11,7 +11,7 @@ CORS(app)  # To allow frontend JS to access this API
 dynamodb = boto3.resource('dynamodb', region_name='us-east-1')  # e.g. 'ap-south-1'
 table = dynamodb.Table('Machine_data')  # Replace with your actual table name
 
-@app.route('/jute', methods=['GET'])
+@app.route('/', methods=['GET'])
 def get_vehicles():
     try:
         # Scan all data (for demo purpose – use filters in real usage)
@@ -22,4 +22,4 @@ def get_vehicles():
         return jsonify({"error": str(e)})
 
 if __name__ == '__main__':
-    app.run(debug=True,port=5000)
+    app.run(debug=True)
